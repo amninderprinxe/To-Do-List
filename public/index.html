@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow — To-Do Manager</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">TaskFlow</span>
+      </div>
+      <p class="header-sub">Stay focused. Get things done.</p>
+    </header>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-num" id="stat-total">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" id="stat-pending">0</span>
+        <span class="stat-label">Pending</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" id="stat-done">0</span>
+        <span class="stat-label">Done</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+    </div>
+
+    <!-- ADD TASK FORM -->
+    <div class="add-card">
+      <input
+        type="text"
+        id="task-input"
+        class="task-input"
+        placeholder="What needs to be done?"
+        maxlength="255"
+        autocomplete="off"
+      />
+      <button class="btn-add" id="add-btn" onclick="addTask()">
+        <span class="btn-icon">+</span>
+        <span>Add Task</span>
+      </button>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter(this, 'all')">All</button>
+      <button class="filter-btn" data-filter="pending" onclick="setFilter(this, 'pending')">Pending</button>
+      <button class="filter-btn" data-filter="completed" onclick="setFilter(this, 'completed')">Completed</button>
+    </div>
+
+    <!-- TASK LIST -->
+    <div class="task-list" id="task-list"></div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-icon">✦</div>
+      <p class="empty-title">No tasks here</p>
+      <p class="empty-sub">Add a task above to get started!</p>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
